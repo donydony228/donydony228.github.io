@@ -1,38 +1,34 @@
-<!doctype html>
-<html>
-  <head>
-    # Set the font family for the whole page
-    <link
-    href="http://fonts.googleapis.com/css?family=Open+Sans"
-    rel="stylesheet"
-    type="text/css" />
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet 地圖示範</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map { height: 500px; width: 100%; }
+    </style>
+</head>
+<body>
 
+<h2>Leaflet 地圖示範</h2>
+<div id="map"></div>
 
-    <meta charset="utf-8" />
-    <title>愛你臭寶</title>
-  </head>
-  <body>
-    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+<script>
+    // 初始化地圖，設置中心點 (台北101) 和縮放等級
+    var map = L.map('map').setView([23.00104942056937, 121.13090957408922], 13);
 
+    // 加入 OpenStreetMap 作為地圖底圖
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap 貢獻者'
+    }).addTo(map);
 
-    <p>My girlfriend is <strong>very</strong> stinky.</p>
-    <h1>愛你臭寶</h1>
-    <h2>愛你愛你愛你</h2>
-    <h3>嘿嘿嘿嘿嘿</h3>
-    <h4>按一下圖片</h4>
-    <img src="image\4B59361A-4691-494B-939F-BB455C863508.jpg" alt="My test image" width="500" height="500" />  
-    <ul>
-      <li>My first list item</li>
-      <li>My second list item</li>
-      <li>My third list item</li>
-    </ul>
-    <p>臭臭臭臭臭</p>
-    <a href="https://maps.app.goo.gl/knvFGx3xM3A2M1Vj8"
-        >美食地圖</a
-    >
-  
-  <button>Change user</button>
-  <script src="scripts/main.js"></script>
+    // 添加標記 (Marker) 在台北101
+    var marker = L.marker([23.00104942056937, 121.13090957408922]).addTo(map)
+        .bindPopup("<b>加拿國小</b><br>這是我們的基地。")
+        .openPopup();
+</script>
 
-  </body>
+</body>
 </html>
